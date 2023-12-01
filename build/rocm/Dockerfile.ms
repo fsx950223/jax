@@ -1,9 +1,9 @@
 ################################################################################
-FROM rocm/dev-ubuntu-20.04:5.4-complete as rt_build
+FROM ubuntu:focal as rt_build
 MAINTAINER Rahul Batra<rahbatra@amd.com>
 ################################################################################
-ARG ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/5.6/
-ARG ROCM_BUILD_NAME=ubuntu
+ARG ROCM_DEB_REPO=http://repo.radeon.com/rocm/apt/5.6/ubuntu
+ARG ROCM_BUILD_NAME=focal
 ARG ROCM_BUILD_NUM=main
 ARG ROCM_PATH=/opt/rocm-5.6.0
 
@@ -25,8 +25,6 @@ RUN bin/bash -c 'if [[ $ROCM_DEB_REPO == http://repo.radeon.com/rocm/*  ]] ; the
 RUN apt-get update --allow-insecure-repositories && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   build-essential \
   software-properties-common \
-  clang-6.0 \
-  clang-format-6.0 \
   curl \
   g++-multilib \
   git \
